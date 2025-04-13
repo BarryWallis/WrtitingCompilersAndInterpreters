@@ -7,8 +7,4 @@
 	  <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FrontendIntermeidateMutual\FrontendIntermediateMutual.csproj" />
-  </ItemGroup>
-
 </Project>

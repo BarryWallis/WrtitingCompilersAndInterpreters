@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FrontendIntermeidateMutual\FrontendIntermediateMutual.csproj" />
+    <ProjectReference Include="..\CommonInterfaces\CommonInterfaces.csproj" />
     <ProjectReference Include="..\Intermediate\Intermediate.csproj" />
   </ItemGroup>
 

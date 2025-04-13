@@ -6,12 +6,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Fronte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intermediate", "Intermediate\Intermediate.csproj", "{40978F90-AD03-4532-B411-1CED6738B78E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontendIntermediateMutual", "FrontendIntermeidateMutual\FrontendIntermediateMutual.csproj", "{AD0D961C-9BB4-44CC-8521-2A4157E9183D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonInterfaces", "CommonInterfaces\CommonInterfaces.csproj", "{A632B15B-07DB-4D5C-8130-29F3137BA712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,10 @@ Global
 		{40978F90-AD03-4532-B411-1CED6738B78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40978F90-AD03-4532-B411-1CED6738B78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40978F90-AD03-4532-B411-1CED6738B78E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD0D961C-9BB4-44CC-8521-2A4157E9183D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0D961C-9BB4-44CC-8521-2A4157E9183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0D961C-9BB4-44CC-8521-2A4157E9183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0D961C-9BB4-44CC-8521-2A4157E9183D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

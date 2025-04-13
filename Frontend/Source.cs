@@ -15,12 +15,13 @@ namespace Frontend;
 public class Source(StreamReader reader)
 {
     private string? _line;
-    private int _lineNumber = 0;
-    private int? _currentPosition = null;
     private readonly StreamReader _reader = reader;
 
     public const char EOF = '\0';
     public const char EOL = '\n';
+
+    public int LineNumber { get; private set; } = 0;
+    public int? Position { get; private set; } = null;
 
     /// <summary>
     /// Retrieves the current character from a line based on the current position. 
@@ -30,7 +31,7 @@ public class Source(StreamReader reader)
     /// </returns>
     public char GetCurrentChar()
     {
-        if (_currentPosition is null)
+        if (Position is null)
         {
             ReadLine();
             return GetNextChar();
@@ -39,18 +40,18 @@ public class Source(StreamReader reader)
         {
             return EOF;
         }
-        else if (_currentPosition == -1 || _currentPosition == _line.Length)
+        else if (Position == -1 || Position == _line.Length)
         {
             return EOL;
         }
-        else if (_currentPosition > _line.Length)
+        else if (Position > _line.Length)
         {
             ReadLine();
             return GetNextChar();
         }
         else
         {
-            return _line[_currentPosition.Value];
+            return _line[Position.Value];
         }
     }
 
@@ -66,14 +67,14 @@ public class Source(StreamReader reader)
     /// <returns>The character at the updated current position.</returns>
     public char GetNextChar()
     {
-        Debug.Assert(_currentPosition >= -1);
+        Debug.Assert(Position >= -1);
 
-        _currentPosition += 1;
+        Position += 1;
 
         char currentChar = GetCurrentChar();
 
         Debug.Assert(currentChar == EOF || _line is not null);
-        Debug.Assert(currentChar == EOF || (_currentPosition <= _line!.Length && _currentPosition >= 0));
+        Debug.Assert(currentChar == EOF || (Position <= _line!.Length && Position >= 0));
         return currentChar;
     }
 
@@ -84,8 +85,8 @@ public class Source(StreamReader reader)
     private void ReadLine()
     {
         _line = _reader.ReadLine();
-        _currentPosition = -1;
-        _lineNumber += _line is not null ? 1 : 0;
+        Position = -1;
+        LineNumber += _line is not null ? 1 : 0;
     }
 
     /// <summary>
@@ -95,7 +96,7 @@ public class Source(StreamReader reader)
     /// <returns>The next character or EOF if the line is null.</returns>
     public char PeekChar()
     {
-        Debug.Assert(_currentPosition is not null);
+        Debug.Assert(Position is not null);
 
         _ = GetCurrentChar();
         if (_line is null)
@@ -103,7 +104,7 @@ public class Source(StreamReader reader)
             return EOF;
         }
 
-        int nextPosition = _currentPosition.Value + 1;
+        int nextPosition = Position.Value + 1;
         return nextPosition < _line.Length ? _line[nextPosition] : EOL;
     }
 }

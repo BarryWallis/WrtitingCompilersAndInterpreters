@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using FrontendIntermediateMutual;
 
 namespace Frontend;
 
@@ -28,6 +27,8 @@ public abstract class Scanner(Source source)
     public Token GetNextToken()
     {
         CurrentToken = ExtractToken();
+
+        Debug.Assert(CurrentToken is not null);
         return CurrentToken;
     }
 
