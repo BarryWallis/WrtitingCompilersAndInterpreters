@@ -2,7 +2,9 @@
 
 using Intermediate;
 
-namespace Frontend;
+using Messages;
+
+namespace FrontendComponents;
 
 /// <summary>
 /// Abstract class for parsing, utilizing a scanner to read tokens. It maintains an error count and provides 
@@ -12,13 +14,15 @@ namespace Frontend;
 /// Initializes a new instance of the Parser class with a specified scanner for processing input.
 /// </remarks>
 /// <param name="scanner">The input processing tool used to analyze and interpret data.</param>
-public abstract class Parser(Scanner scanner)
+public abstract class Parser(Scanner scanner) : IMessageProducer
 {
     protected static ISymbolTable? SymbolTable { get; set; } = null;
 
+    protected static readonly MessageHandler messageHandler = new();
+
     protected Scanner Scanner { get; init; } = scanner;
 
-    protected IntermediateCode? IntermediateCode { get; set; } = null;
+    protected IIntermediateCode? IntermediateCode { get; set; } = null;
 
     /// <summary>
     /// Represents the number of errors encountered.
@@ -55,4 +59,22 @@ public abstract class Parser(Scanner scanner)
         Debug.Assert(token is not null);
         return token;
     }
+
+    /// <summary>
+    /// Adds a listener to handle incoming messages.
+    /// </summary>
+    /// <param name="listener">The provided listener will be notified when a new message is received.</param>
+    public void AddMessageListener(IMessageListener listener) => messageHandler.AddListener(listener);
+
+    /// <summary>
+    /// Removes a message listener from the message handler.
+    /// </summary>
+    /// <param name="listener">The listener to be removed from the message handling process.</param>
+    public void RemoveMessageListener(IMessageListener listener) => messageHandler.RemoveListener(listener);
+
+    /// <summary>
+    /// Sends a message using the message handler.
+    /// </summary>
+    /// <param name="message">The object containing the details of the message to be sent.</param>
+    public void SendMessage(Message message) => messageHandler.SendMessage(message);
 }

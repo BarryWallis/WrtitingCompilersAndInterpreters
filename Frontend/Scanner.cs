@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace Frontend;
+namespace FrontendComponents;
 
 /// <summary>
 /// An abstract class for scanning input and extracting tokens from a source.

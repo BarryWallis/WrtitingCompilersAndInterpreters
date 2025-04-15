@@ -1,13 +1,6 @@
-﻿
+﻿using CommonInterfaces;
 
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.Contracts;
-using System.Diagnostics.Metrics;
-
-using CommonInterfaces;
-
-namespace Frontend;
+namespace FrontendComponents;
 
 /// <summary>
 /// Abstract record representing a token with properties for type, text, and value. Initializes with source 
@@ -34,7 +27,7 @@ public abstract record Token
     {
         Source = source;
         LineNumber = source.LineNumber;
-        Position = source.Position ?? 0;
+        Position = source.CurrentPosition ?? 0;
         Extract();
     }
 

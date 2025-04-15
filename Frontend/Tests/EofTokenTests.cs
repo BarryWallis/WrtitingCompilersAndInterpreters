@@ -1,8 +1,6 @@
-using System;
-using System.IO;
 using Xunit;
 
-namespace Frontend.Tests;
+namespace FrontendComponents.Tests;
 
 public class EofTokenTests : IDisposable
 {

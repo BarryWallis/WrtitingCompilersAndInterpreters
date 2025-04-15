@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace Frontend;
+using Messages;
+
+namespace FrontendComponents;
 
 /// <summary>
 /// Handles reading characters from the source program line by line, tracking the current position and line 
 /// number.
 /// </summary>
 /// <param name="reader">Provides the input stream for reading the source program.</param>
-public class Source(StreamReader reader)
+public class Source(StreamReader reader) : IMessageProducer
 {
     private string? _line;
     private readonly StreamReader _reader = reader;
+    private readonly MessageHandler _messageHandler = new();
 
     public const char EOF = '\0';
     public const char EOL = '\n';
 
     public int LineNumber { get; private set; } = 0;
-    public int? Position { get; private set; } = null;
+    public int? CurrentPosition { get; private set; } = null;
 
     /// <summary>
     /// Retrieves the current character from a line based on the current position. 
@@ -31,7 +29,7 @@ public class Source(StreamReader reader)
     /// </returns>
     public char GetCurrentChar()
     {
-        if (Position is null)
+        if (CurrentPosition is null)
         {
             ReadLine();
             return GetNextChar();
@@ -40,18 +38,18 @@ public class Source(StreamReader reader)
         {
             return EOF;
         }
-        else if (Position == -1 || Position == _line.Length)
+        else if (CurrentPosition == -1 || CurrentPosition == _line.Length)
         {
             return EOL;
         }
-        else if (Position > _line.Length)
+        else if (CurrentPosition > _line.Length)
         {
             ReadLine();
             return GetNextChar();
         }
         else
         {
-            return _line[Position.Value];
+            return _line[CurrentPosition.Value];
         }
     }
 
@@ -67,14 +65,14 @@ public class Source(StreamReader reader)
     /// <returns>The character at the updated current position.</returns>
     public char GetNextChar()
     {
-        Debug.Assert(Position >= -1);
+        Debug.Assert(CurrentPosition >= -1);
 
-        Position += 1;
+        CurrentPosition += 1;
 
         char currentChar = GetCurrentChar();
 
         Debug.Assert(currentChar == EOF || _line is not null);
-        Debug.Assert(currentChar == EOF || (Position <= _line!.Length && Position >= 0));
+        Debug.Assert(currentChar == EOF || (CurrentPosition <= _line!.Length && CurrentPosition >= 0));
         return currentChar;
     }
 
@@ -85,8 +83,12 @@ public class Source(StreamReader reader)
     private void ReadLine()
     {
         _line = _reader.ReadLine();
-        Position = -1;
-        LineNumber += _line is not null ? 1 : 0;
+        CurrentPosition = -1;
+        if (_line is not null)
+        {
+            LineNumber += 1;
+            SendMessage(new SourceLineMessage(LineNumber, _line));
+        }
     }
 
     /// <summary>
@@ -96,15 +98,31 @@ public class Source(StreamReader reader)
     /// <returns>The next character or EOF if the line is null.</returns>
     public char PeekChar()
     {
-        Debug.Assert(Position is not null);
+        Debug.Assert(CurrentPosition is not null);
 
         _ = GetCurrentChar();
         if (_line is null)
-        {
             return EOF;
-        }
 
-        int nextPosition = Position.Value + 1;
+        int nextPosition = CurrentPosition.Value + 1;
         return nextPosition < _line.Length ? _line[nextPosition] : EOL;
     }
+
+    /// <summary>
+    /// Adds a listener to handle incoming messages.
+    /// </summary>
+    /// <param name="listener">The provided listener will be notified when a new message is received.</param>
+    public void AddMessageListener(IMessageListener listener) => _messageHandler.AddListener(listener);
+
+    /// <summary>
+    /// Removes a message listener from the message handler.
+    /// </summary>
+    /// <param name="listener">The listener to be removed from the message handling process.</param>
+    public void RemoveMessageListener(IMessageListener listener) => _messageHandler.RemoveListener(listener);
+
+    /// <summary>
+    /// Sends a message using the message handler.
+    /// </summary>
+    /// <param name="message">The message to be sent through the message handler.</param>
+    public void SendMessage(Message message) => _messageHandler.SendMessage(message);
 }

@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.35906.104
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{50B2CB9B-1F4F-4743-86CC-46D7E7C5438C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontendComponents", "Frontend\FrontendComponents.csproj", "{50B2CB9B-1F4F-4743-86CC-46D7E7C5438C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intermediate", "Intermediate\Intermediate.csproj", "{40978F90-AD03-4532-B411-1CED6738B78E}"
 EndProject
@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonInterfaces", "CommonInterfaces\CommonInterfaces.csproj", "{A632B15B-07DB-4D5C-8130-29F3137BA712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Message\Messages.csproj", "{ACD441C5-57DB-4A15-BBEC-E7D0C56A1998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendComponents", "BackendComponents\BackendComponents.csproj", "{0073DC83-6296-491C-B1C9-F47F96E87343}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,14 @@ Global
 		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A632B15B-07DB-4D5C-8130-29F3137BA712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD441C5-57DB-4A15-BBEC-E7D0C56A1998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD441C5-57DB-4A15-BBEC-E7D0C56A1998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD441C5-57DB-4A15-BBEC-E7D0C56A1998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD441C5-57DB-4A15-BBEC-E7D0C56A1998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0073DC83-6296-491C-B1C9-F47F96E87343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0073DC83-6296-491C-B1C9-F47F96E87343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0073DC83-6296-491C-B1C9-F47F96E87343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0073DC83-6296-491C-B1C9-F47F96E87343}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
