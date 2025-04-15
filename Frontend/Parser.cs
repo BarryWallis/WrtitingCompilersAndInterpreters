@@ -16,13 +16,13 @@ namespace FrontendComponents;
 /// <param name="scanner">The input processing tool used to analyze and interpret data.</param>
 public abstract class Parser(Scanner scanner) : IMessageProducer
 {
-    protected static ISymbolTable? SymbolTable { get; set; } = null;
+    protected static ISymbolTable? SymbolTable { get; set; } = null; 
 
-    protected static readonly MessageHandler messageHandler = new();
+    protected static readonly MessageHandler _messageHandler = new(); 
 
-    protected Scanner Scanner { get; init; } = scanner;
+    protected Scanner Scanner { get; init; } = scanner; 
 
-    protected IIntermediateCode? IntermediateCode { get; set; } = null;
+    protected IIntermediateCode? IntermediateCode { get; set; } = null; 
 
     /// <summary>
     /// Represents the number of errors encountered.
@@ -64,17 +64,17 @@ public abstract class Parser(Scanner scanner) : IMessageProducer
     /// Adds a listener to handle incoming messages.
     /// </summary>
     /// <param name="listener">The provided listener will be notified when a new message is received.</param>
-    public void AddMessageListener(IMessageListener listener) => messageHandler.AddListener(listener);
+    public void AddMessageListener(IMessageListener listener) => _messageHandler.AddListener(listener);
 
     /// <summary>
     /// Removes a message listener from the message handler.
     /// </summary>
     /// <param name="listener">The listener to be removed from the message handling process.</param>
-    public void RemoveMessageListener(IMessageListener listener) => messageHandler.RemoveListener(listener);
+    public void RemoveMessageListener(IMessageListener listener) => _messageHandler.RemoveListener(listener);
 
     /// <summary>
     /// Sends a message using the message handler.
     /// </summary>
     /// <param name="message">The object containing the details of the message to be sent.</param>
-    public void SendMessage(Message message) => messageHandler.SendMessage(message);
+    public void SendMessage(Message message) => _messageHandler.SendMessage(message);
 }
