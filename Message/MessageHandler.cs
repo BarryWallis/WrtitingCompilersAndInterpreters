@@ -2,6 +2,10 @@
 
 namespace Messages;
 
+/// <summary>
+/// Manages a collection of message listeners, allowing addition, removal, and notification of listeners when 
+/// a message is sent.
+/// </summary>
 public class MessageHandler
 {
     private Message? _message = null;

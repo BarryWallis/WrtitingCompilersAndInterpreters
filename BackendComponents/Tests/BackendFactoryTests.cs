@@ -1,8 +1,7 @@
-using System;
-using Xunit;
-using BackendComponents;
 using BackendComponents.Compiler;
 using BackendComponents.Interpreter;
+
+using Xunit;
 
 namespace BackendComponents.Tests;
 
@@ -29,7 +28,7 @@ public class BackendFactoryTests
     }
 
     [Fact]
-    public void CreateBackend_InvalidOperation_ThrowsUnsupportedBackendException() 
-        => _ = Assert.Throws<UnsupportedBackendException>(() 
+    public void CreateBackend_InvalidOperation_ThrowsUnsupportedBackendException()
+        => _ = Assert.Throws<UnsupportedBackendException>(()
                       => BackendFactory.CreateBackend("invalid"));
 }

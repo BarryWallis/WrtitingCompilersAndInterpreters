@@ -23,15 +23,19 @@ public class ParserMessageListener : IMessageListener
         switch (message)
         {
             case ParserSummaryMessage parserSummaryMessage:
-                Console.WriteLine();
-                Console.WriteLine($"{parserSummaryMessage.NumberOfLines,20} source lines.");
-                Console.WriteLine($"{parserSummaryMessage.ErrorCount,20} syntax errors.");
-                Console.WriteLine($"{parserSummaryMessage.ElapsedTIme,20:F2} seconds total parsing time.");
-                Console.WriteLine();
+                WriteParserSummaryMessage(parserSummaryMessage);
                 break;
             default:
                 throw new UnreachableException();
         }
     }
 
+    private static void WriteParserSummaryMessage(ParserSummaryMessage parserSummaryMessage)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"{parserSummaryMessage.NumberOfLines,20} source lines.");
+        Console.WriteLine($"{parserSummaryMessage.ErrorCount,20} syntax errors.");
+        Console.WriteLine($"{parserSummaryMessage.ElapsedTIme,20:F2} seconds total parsing time.");
+        Console.WriteLine();
+    }
 }

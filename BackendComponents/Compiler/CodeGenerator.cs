@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 using Intermediate;
 
@@ -42,14 +37,14 @@ public class CodeGenerator : Backend
     /// Adds a message listener to the message handler for processing incoming messages.
     /// </summary>
     /// <param name="listener">The listener is used to handle messages when they are received.</param>
-    public override void AddMessageListener(IMessageListener listener) 
+    public override void AddMessageListener(IMessageListener listener)
         => _messageHandler.AddListener(listener);
 
     /// <summary>
     /// Removes a message listener from the message handler.
     /// </summary>
     /// <param name="listener">The listener to be removed from the message handling process.</param>
-    public override void RemoveMessageListener(IMessageListener listener) 
+    public override void RemoveMessageListener(IMessageListener listener)
         => _messageHandler.RemoveListener(listener);
 
     /// <summary>

@@ -8,8 +8,8 @@ namespace FrontendComponents;
 /// </summary>
 public abstract record Token
 {
-    protected ITokenType? _type = null; 
-    protected Source _source; 
+    protected ITokenType? _type = null;
+    protected Source _source;
 
     public int LineNumber { get; }
     public int Position { get; }
@@ -25,7 +25,7 @@ public abstract record Token
     /// </param>
     public Token(Source source)
     {
-        _source = source; 
+        _source = source;
         LineNumber = source.LineNumber;
         Position = source.CurrentPosition ?? 0;
         Extract();
@@ -50,17 +50,17 @@ public abstract record Token
     /// <summary>
     /// Advances to the next character in the source. 
     /// </summary>
-    protected void NextChar() => _source.GetNextChar(); 
+    protected void NextChar() => _source.GetNextChar();
 
     /// <summary>
     /// Retrieves the current character from the source.
     /// </summary>
     /// <returns>Returns the character currently being processed.</returns>
-    protected char CurrentChar() => _source.GetCurrentChar(); 
+    protected char CurrentChar() => _source.GetCurrentChar();
 
     /// <summary>
     /// Retrieves the next character from the source without advancing the position.
     /// </summary>
     /// <returns>Returns the next character in the source.</returns>
-    protected char PeekChar() => _source.PeekChar(); 
+    protected char PeekChar() => _source.PeekChar();
 }

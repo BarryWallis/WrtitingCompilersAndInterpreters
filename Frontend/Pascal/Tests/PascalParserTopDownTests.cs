@@ -1,10 +1,6 @@
-using System;
-using System.Diagnostics;
-using System.IO;
 using Moq;
+
 using Xunit;
-using FrontendComponents;
-using FrontendComponents.Pascal;
 
 namespace FrontendComponents.Pascal.Tests;
 

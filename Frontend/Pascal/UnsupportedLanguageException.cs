@@ -10,7 +10,7 @@ public class UnsupportedLanguageException : Exception
     /// <summary>
     /// Represents an exception for unsupported programming languages.
     /// </summary>
-     /// <param name="language">Specifies the programming language that is not supported.</param>
+    /// <param name="language">Specifies the programming language that is not supported.</param>
     public UnsupportedLanguageException(string? language) : base($"Unsupported language: {language}")
     {
     }
@@ -22,7 +22,8 @@ public class UnsupportedLanguageException : Exception
     /// Holds additional information about a previous exception that led to 
     /// this error.
     /// </param>
-    public UnsupportedLanguageException(string? language, Exception? innerException) : base(language, innerException)
+    public UnsupportedLanguageException(string? language, Exception? innerException) 
+        : base(language, innerException)
     {
     }
 }

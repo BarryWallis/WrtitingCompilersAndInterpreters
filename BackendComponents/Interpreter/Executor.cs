@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 using Intermediate;
 
 using Messages;
-
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Payloads;
 
 namespace BackendComponents.Interpreter;
 
@@ -42,14 +35,14 @@ public class Executor : Backend
     /// Adds a message listener to the message handler for processing incoming messages.
     /// </summary>
     /// <param name="listener">The provided listener will handle the messages received by the system.</param>
-    public override void AddMessageListener(IMessageListener listener) 
+    public override void AddMessageListener(IMessageListener listener)
         => _messageHandler.AddListener(listener);
 
     /// <summary>
     /// Removes a message listener from the message handler.
     /// </summary>
     /// <param name="listener">The listener to be removed from the message handling process.</param>
-    public override void RemoveMessageListener(IMessageListener listener) 
+    public override void RemoveMessageListener(IMessageListener listener)
         => _messageHandler.RemoveListener(listener);
 
     /// <summary>

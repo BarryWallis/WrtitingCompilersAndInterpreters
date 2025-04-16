@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FrontendComponents;
-
-namespace FrontendComponents.Pascal;
+﻿namespace FrontendComponents.Pascal;
 
 /// <summary>
 /// Extracts a token based on the current character, returning an end-of-file token if the character is EOF.

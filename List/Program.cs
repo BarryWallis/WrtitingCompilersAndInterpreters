@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-
-namespace List;
+﻿namespace List;
 
 public class Program
 {

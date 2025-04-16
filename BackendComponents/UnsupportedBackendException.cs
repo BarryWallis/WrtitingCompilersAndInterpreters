@@ -20,7 +20,7 @@ public class UnsupportedBackendException : Exception
     /// </summary>
     /// <param name="operation">Specifies the operation that is not supported by the backend.</param>
     /// <param name="innerException">Holds the original exception that caused this exception to be thrown.</param>
-    public UnsupportedBackendException(string? operation, Exception? innerException) 
+    public UnsupportedBackendException(string? operation, Exception? innerException)
         : base($"Unsupported Backend: {operation}", innerException)
     {
     }

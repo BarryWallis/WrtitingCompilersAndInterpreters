@@ -2,8 +2,6 @@
 
 using Messages;
 
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
-
 namespace List;
 
 /// <summary>

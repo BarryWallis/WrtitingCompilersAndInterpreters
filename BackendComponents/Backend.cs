@@ -6,10 +6,10 @@ namespace BackendComponents;
 
 public abstract class Backend : IMessageProducer
 {
-    protected static MessageHandler MessageHandler => new(); 
+    protected static MessageHandler MessageHandler => new();
 
-    protected ISymbolTable? SymbolTable { get; set; } 
-    protected IIntermediateCode? IntermediateCode { get; set; } 
+    protected ISymbolTable? SymbolTable { get; set; }
+    protected IIntermediateCode? IntermediateCode { get; set; }
 
     /// <summary>
     /// Processes intermediate code using a symbol table for context and information.

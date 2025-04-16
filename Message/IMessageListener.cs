@@ -1,5 +1,8 @@
 ﻿namespace Messages;
 
+/// <summary>
+/// Handles the event of receiving a message and processes it for further actions.
+/// </summary>
 public interface IMessageListener
 {
     /// <summary>

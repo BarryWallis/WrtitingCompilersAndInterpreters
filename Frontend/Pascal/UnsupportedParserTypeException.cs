@@ -24,7 +24,7 @@ public class UnsupportedParserTypeException : Exception
     /// <param name="innerException">
     /// Holds an optional exception that caused this exception to be thrown.
     /// </param>
-    public UnsupportedParserTypeException(string? type, Exception? innerException) 
+    public UnsupportedParserTypeException(string? type, Exception? innerException)
         : base($"Unsupported parser type: {type}", innerException)
     {
     }
