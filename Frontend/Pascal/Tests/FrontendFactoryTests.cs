@@ -1,7 +1,5 @@
 using System;
 using Xunit;
-using FrontendComponents.Pascal;
-using FrontendComponents;
 using System.Diagnostics;
 
 namespace FrontendComponents.Pascal.Tests;

@@ -16,11 +16,16 @@ namespace FrontendComponents.Pascal;
 /// <param name="scanner">Provides the input source for the parser to analyze the Pascal code.</param>
 public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
 {
+    private int _errorCount;
+
     /// <summary>
     /// <inheritdoc cref="Parser.ErrorCount"/>
     /// </summary>
-    // TODO: Implement error handling and counting.
-    public override int ErrorCount { get => 0; protected set; }
+    public override int ErrorCount
+    {
+        get => _errorCount;
+        protected set => _errorCount = value;
+    }
 
     /// <summary>
     /// Parses tokens until the end of file is reached. It measures the time taken for parsing and sends a 

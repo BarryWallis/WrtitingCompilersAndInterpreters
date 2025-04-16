@@ -1,5 +1,5 @@
 ﻿namespace Messages;
 
-public record InterpreterSummaryMessage : Message
+public record InterpreterSummaryMessage(int ExecutionCount, int RuntimeErrors, double ElapsedTime) : Message
 {
 }

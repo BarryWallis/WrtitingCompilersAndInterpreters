@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrontendComponents.Pascal;
+using FrontendComponents.Pascal;
+
+namespace FrontendComponents;
 
 /// <summary>
 /// Creates a parser for the specified programming language and type. 
 /// </summary>
-public class FrontendFactory
+public static class FrontendFactory
 {
     /// <summary>
     /// Creates a parser based on the specified programming language and parsing type.

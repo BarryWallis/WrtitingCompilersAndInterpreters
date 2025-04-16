@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "List": {
+      "commandName": "Project",
+      "commandLineArgs": "compile C:\\Users\\barry\\source\\repos\\WrtitingCompilersAndInterpreters\\List\\hello.pas"
+    }
+  }
+}

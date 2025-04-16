@@ -16,13 +16,12 @@ namespace FrontendComponents;
 /// <param name="scanner">The input processing tool used to analyze and interpret data.</param>
 public abstract class Parser(Scanner scanner) : IMessageProducer
 {
-    protected static ISymbolTable? SymbolTable { get; set; } = null; 
+    protected static readonly MessageHandler _messageHandler = new();
 
-    protected static readonly MessageHandler _messageHandler = new(); 
+    protected Scanner Scanner { get; init; } = scanner;
 
-    protected Scanner Scanner { get; init; } = scanner; 
-
-    protected IIntermediateCode? IntermediateCode { get; set; } = null; 
+    public static ISymbolTable? SymbolTable { get; protected set; } = null;
+    public IIntermediateCode? IntermediateCode { get; protected set; } = null;
 
     /// <summary>
     /// Represents the number of errors encountered.
