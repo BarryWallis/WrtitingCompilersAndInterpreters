@@ -8,7 +8,7 @@ namespace FrontendComponents;
 /// </summary>
 public abstract record Token
 {
-    protected ITokenType? _type = null;
+    protected TokenType? _type = null;
     protected Source _source;
 
     public int LineNumber { get; }

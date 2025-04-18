@@ -1,5 +1,6 @@
 ﻿namespace Messages;
 
-public record SyntaxErrorMessage : Message
+public record SyntaxErrorMessage(int LineNumber, int Position, string? TokenText, string ErrorMessage) 
+    : Message
 {
 }

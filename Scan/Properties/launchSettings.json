@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Scan": {
+      "commandName": "Project",
+      "commandLineArgs": "compile C:\\Users\\barry\\source\\repos\\WrtitingCompilersAndInterpreters\\Scan\\scnnertest.txt"
+    }
+  }
+}

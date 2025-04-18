@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{D4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List", "List\List.csproj", "{2BE47A47-FC43-45CA-931D-D8EB8559BCDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scan", "Scan\Scan.csproj", "{851296F4-A822-4AAC-B758-138F85DA1077}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,12 +53,17 @@ Global
 		{2BE47A47-FC43-45CA-931D-D8EB8559BCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BE47A47-FC43-45CA-931D-D8EB8559BCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BE47A47-FC43-45CA-931D-D8EB8559BCDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{851296F4-A822-4AAC-B758-138F85DA1077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{851296F4-A822-4AAC-B758-138F85DA1077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{851296F4-A822-4AAC-B758-138F85DA1077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{851296F4-A822-4AAC-B758-138F85DA1077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2BE47A47-FC43-45CA-931D-D8EB8559BCDC} = {D4BDC1BD-6642-464D-9162-D2D0CFB88217}
+		{851296F4-A822-4AAC-B758-138F85DA1077} = {D4BDC1BD-6642-464D-9162-D2D0CFB88217}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE3DDB6E-2D8C-40F9-BBB0-0EACC10E0E72}

@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 
+using CommonInterfaces;
+
 using Messages;
 
 namespace FrontendComponents.Pascal;
@@ -12,12 +14,14 @@ public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
 {
     private int _errorCount;
 
+    protected static readonly PascalErrorHandler errorHandler = new();
+
     /// <summary>
     /// <inheritdoc cref="Parser.ErrorCount"/>
     /// </summary>
     public override int ErrorCount
     {
-        get => _errorCount;
+        get => ErrorHandler.ErrorCount;
         protected set => _errorCount = value;
     }
 
@@ -30,12 +34,33 @@ public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
         Token token;
         Stopwatch stopwatch = new();
         stopwatch.Start();
-        while ((token = GetNextToken()) is not EofToken)
+
+        try
         {
-            // Do nothing
+            while ((token = GetNextToken()) is not EofToken)
+            {
+                if (token is not ErrorToken)
+                {
+                    Debug.Assert(token.Text is not null);
+                    SendMessage(new TokenMessage(token.LineNumber, token.Position, TokenType.Placeholder, 
+                                                 token.Text, token.Value));
+                }
+                else
+                {
+                    Debug.Assert(token.Value is not null);
+                    ErrorHandler.Flag(token, (PascalErrorCode)token.Value, this);
+                }
+            }
+
+            stopwatch.Stop();
+            SendMessage(new ParserSummaryMessage(token.LineNumber, ErrorCount, 
+                                                 stopwatch.Elapsed.TotalSeconds));
+        }
+        catch (IOException)
+        {
+            stopwatch.Stop();
+            ErrorHandler.AbortTranslation(PascalErrorCode.IOError, this);
         }
 
-        stopwatch.Stop();
-        SendMessage(new ParserSummaryMessage(token.LineNumber, ErrorCount, stopwatch.Elapsed.TotalSeconds));
     }
 }
