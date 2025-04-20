@@ -50,7 +50,7 @@ public abstract class Parser(Scanner scanner) : IMessageProducer
     /// <summary>
     /// Retrieves the next currentToken from the scanner.
     /// </summary>
-    /// <returns>Returns the next currentToken available from the scanning process.</returns>
+    /// <returns>Returns the next token available from the scanning process.</returns>
     public Token GetNextToken()
     {
         Token token = Scanner.GetNextToken();

@@ -55,12 +55,12 @@ public class ParserMessageListener : IMessageListener
 
     private static void WriteTokenMessage(TokenMessage tokenMessage)
     {
-        Console.WriteLine($">>> {tokenMessage.TokenType,-15} " +
+        Console.WriteLine($">>> {tokenMessage.Kind,-15} " +
             $"line={tokenMessage.LineNumber:000}, pos={tokenMessage.Position,2}, " +
             $"text=\"{tokenMessage.Text}\"");
         if (tokenMessage.Value is not null)
         {
-            if (tokenMessage.TokenType.ToString() == "String")
+            if (tokenMessage.Kind.ToString() == "String")
             {
                 Debug.Assert(tokenMessage.Value is string);
                 tokenMessage = tokenMessage with { Value = $"\"{tokenMessage.Value}\"" };

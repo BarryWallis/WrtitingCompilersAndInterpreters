@@ -1,5 +1,7 @@
 ﻿using CommonInterfaces;
 
+using FrontendComponents.Pascal;
+
 namespace FrontendComponents;
 
 /// <summary>
@@ -8,7 +10,6 @@ namespace FrontendComponents;
 /// </summary>
 public abstract record Token
 {
-    protected TokenType? _type = null;
     protected Source _source;
 
     public int LineNumber { get; }

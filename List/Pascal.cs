@@ -13,8 +13,11 @@ public class Pascal
 {
     private readonly Parser? _parser;
     private readonly Source? _source;
+#pragma warning disable 0649
     private readonly IIntermediateCode? _intermediateCode;
     private readonly ISymbolTable? _symbolTable;
+#pragma warning restore 0649
+
     private readonly Backend? _backend;
 
     /// <summary>

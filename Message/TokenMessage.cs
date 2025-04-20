@@ -2,7 +2,7 @@
 
 namespace Messages;
 
-public record TokenMessage(int LineNumber, int Position, TokenType TokenType, string Text, object? Value) 
+public record TokenMessage(int LineNumber, int Position, ITokenType.Kind Kind, string Text, object? Value)
     : Message
 {
 }
