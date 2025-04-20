@@ -38,7 +38,7 @@ public class PascalScanner(Source source) : Scanner(source)
         {
             token = new PascalNumberToken(Source);
         }
-        else if (currentChar == '\\')
+        else if (currentChar == '\'')
         {
             token = new PascalStringToken(Source);
         }

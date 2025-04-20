@@ -35,10 +35,4 @@ public record PascalWordToken : PascalToken
             ? Enum.Parse<ITokenType.Kind>(Text, true)
             : ITokenType.Kind.Identifier;
     }
-
-    /// <summary>
-    /// A helper method to get the next character from the source.
-    /// </summary>
-    /// <returns>The next character from the source.</returns>
-    private char GetNextChar() => _source.GetNextChar();
 }

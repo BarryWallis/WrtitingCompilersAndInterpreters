@@ -21,8 +21,10 @@ public abstract record PascalToken : Token
     /// Create a new Pascal token using the provided source. The token type is determined by the source 
     /// data.
     /// </summary>
-    /// <param name="source"></param>
+    /// <param name="source"><inheritdoc/></param>
     protected PascalToken(Source source) : base(source)
     {
     }
+
+    public char GetNextChar() => _source.GetNextChar();
 }
