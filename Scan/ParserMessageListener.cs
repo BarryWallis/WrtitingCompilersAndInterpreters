@@ -11,7 +11,7 @@ namespace Scan;
 /// <exception cref="UnreachableException">Message type is unrecognized.</exception>
 public class ParserMessageListener : IMessageListener
 {
-    const int _prefixWidth = 5;
+    private const int PrefixWidth = 5;
 
     /// <summary>
     /// Handles incoming messages and processes specific message types for output. It outputs details for
@@ -41,7 +41,7 @@ public class ParserMessageListener : IMessageListener
 
     private static void WriteSyntaxErrorMessage(SyntaxErrorMessage syntaxErrorMessage)
     {
-        int spaceCount = _prefixWidth + syntaxErrorMessage.Position;
+        int spaceCount = PrefixWidth + syntaxErrorMessage.Position;
         StringBuilder flagBuffer = new();
         _ = flagBuffer.Append(' ', spaceCount).Append('^').AppendLine();
         _ = flagBuffer.Append("*** ").Append(syntaxErrorMessage.ErrorMessage);

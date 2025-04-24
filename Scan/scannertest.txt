@@ -20,7 +20,7 @@ spans
 source lines.'
 
 {Special symbol tokens}
-+ - * / := . , ; : = <> < <= >= > ( ) [ ] { } } ^ ..
++ - * / := . , ; : = <> < <= >= > ( ) [ ] { } ^ ..
 +-:=<>=<==.....
 
 {Number tokens}

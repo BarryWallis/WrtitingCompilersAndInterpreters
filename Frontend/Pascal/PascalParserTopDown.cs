@@ -11,7 +11,7 @@ namespace FrontendComponents.Pascal;
 /// <param name="scanner">Provides the input source for the parser to analyze the Pascal code.</param>
 public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
 {
-    protected static readonly PascalErrorHandler errorHandler = new();
+    protected static readonly PascalErrorHandler _errorHandler = new();
 
     /// <summary>
     /// <inheritdoc cref="Parser.ErrorCount"/>
@@ -62,8 +62,9 @@ public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
         if (token is not PascalErrorToken)
         {
             Debug.Assert(token.Text is not null);
+            Debug.Assert(token.Kind is not null);
             SendMessage(new TokenMessage(token.LineNumber, token.Position,
-                                         token.Kind,
+                                         token.Kind.Value,
                                          token.Text, token.Value));
         }
         else

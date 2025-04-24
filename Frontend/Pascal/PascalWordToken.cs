@@ -31,7 +31,7 @@ public record PascalWordToken : PascalToken
         }
 
         Text = textBuffer.ToString();
-        Kind = PascalTokenType.ReservedWords.Contains(Text)
+        Kind = PascalTokenType._reservedWords.Contains(Text)
             ? Enum.Parse<ITokenType.Kind>(Text, true)
             : ITokenType.Kind.Identifier;
     }

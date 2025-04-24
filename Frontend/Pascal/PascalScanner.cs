@@ -1,4 +1,6 @@
 ﻿
+using System.Security.Cryptography;
+
 using CommonInterfaces;
 
 namespace FrontendComponents.Pascal;
@@ -12,8 +14,6 @@ namespace FrontendComponents.Pascal;
 /// </param>
 public class PascalScanner(Source source) : Scanner(source)
 {
-    private readonly Dictionary<string, ITokenType> _pascalSpecialSymbols = [];
-
     /// <summary>
     /// Extracts a token based on the current character. It returns an <see cref="EofToken"/> if the 
     /// current character is EOF and an <see cref="PascalErrorToken"/> if there is an error.
@@ -28,28 +28,32 @@ public class PascalScanner(Source source) : Scanner(source)
 
         if (currentChar == Source.EOF)
         {
-            token = new EofToken(Source);
+            token = new EofToken(_source);
         }
         else if (char.IsLetter(currentChar))
         {
-            token = new PascalWordToken(Source);
+            token = new PascalWordToken(_source);
         }
         else if (char.IsDigit(currentChar))
         {
-            token = new PascalNumberToken(Source);
+            token = new PascalNumberToken(_source);
         }
         else if (currentChar == '\'')
         {
-            token = new PascalStringToken(Source);
+            token = new PascalStringToken(_source);
         }
-        else if (_pascalSpecialSymbols.ContainsKey(char.ToString(currentChar)))
+        else if (currentChar == (char)59)
         {
-            token = new PascalSpecialSymbolToken(Source);
+            token = new PascalSpecialSymbolToken(_source);
+        }
+        else if (PascalTokenType.SpecialSymbols.ContainsKey(currentChar.ToString()))
+        {
+            token = new PascalSpecialSymbolToken(_source);
         }
         else
         {
-            token = new PascalErrorToken(Source, PascalErrorCode.InvalidCharacter,
-                                         char.ToString(currentChar));
+            token = new PascalErrorToken(_source, PascalErrorCode.InvalidCharacter,
+                                         currentChar.ToString());
             _ = NextChar;
         }
 
@@ -77,8 +81,8 @@ public class PascalScanner(Source source) : Scanner(source)
                 }
             }
             else
-            { 
-                currentChar = NextChar; 
+            {
+                currentChar = NextChar;
             }
         }
     }

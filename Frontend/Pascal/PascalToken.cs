@@ -15,7 +15,7 @@ namespace FrontendComponents.Pascal;
 /// </summary>
 public abstract record PascalToken : Token
 {
-    public Kind Kind { get; protected set; }
+    public Kind? Kind { get; protected set; }
 
     /// <summary>
     /// Create a new Pascal token using the provided source. The token type is determined by the source 

@@ -2,9 +2,6 @@
 
 public class Program
 {
-    private const string _flags = "[-x]";
-    private const string _usage = $"Usage: List execute|compile {_flags} <source file path>";
-
     /// <summary>
     /// Entry point for the application that processes command-line arguments to determine the operation and 
     /// source file path.
@@ -33,7 +30,10 @@ public class Program
             }
 
             if (i >= args.Length)
+            {
                 throw new ArgumentException($"Missing source file path.");
+            }
+
             string path = args[i];
             _ = new Pascal(operation, path, flags);
         }

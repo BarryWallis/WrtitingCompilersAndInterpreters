@@ -5,7 +5,7 @@
 /// </summary>
 public interface ITokenType
 {
-    public enum Kind
+    enum Kind
     {
         Placeholder, // TODO: Remove when all tokens are implemented
 

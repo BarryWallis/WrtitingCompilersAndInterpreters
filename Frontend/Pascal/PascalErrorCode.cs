@@ -5,6 +5,7 @@
 /// </summary>
 public record PascalErrorCode
 {
+#pragma warning disable IDE1006 // Naming Styles
     public static readonly PascalErrorCode AlreadyForwarded = new("Already specified in FORWARD");
     public static readonly PascalErrorCode IdentifierRedefined = new("Redefined identifier");
     public static readonly PascalErrorCode IdentifierUndefined = new("Undefined identifier");
@@ -66,6 +67,7 @@ public record PascalErrorCode
 
     public static readonly PascalErrorCode IOError = new("Object I/O error", -101);
     public static readonly PascalErrorCode TooManyErrors = new("Too many syntax errors", -102);
+#pragma warning restore IDE1006 // Naming Styles
 
     public int Status { get; }
     public string Message { get; }

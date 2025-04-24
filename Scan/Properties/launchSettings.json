@@ -2,7 +2,7 @@
   "profiles": {
     "Scan": {
       "commandName": "Project",
-      "commandLineArgs": "compile C:\\Users\\barry\\source\\repos\\WrtitingCompilersAndInterpreters\\Scan\\scnnertest.txt"
+      "commandLineArgs": "compile C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Scan\\scannertest.txt"
     }
   }
 }

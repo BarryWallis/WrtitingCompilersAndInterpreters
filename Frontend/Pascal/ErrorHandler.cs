@@ -7,7 +7,7 @@ namespace FrontendComponents.Pascal;
 
 public class ErrorHandler
 {
-    private const int _maxErrors = 25;
+    private const int MaxErrors = 25;
 
     public static int ErrorCount {get; set;} = 0;
 
@@ -16,7 +16,7 @@ public class ErrorHandler
         Debug.Assert(errorCode.ToString() is not null);
 
         parser.SendMessage(new SyntaxErrorMessage(token.LineNumber, token.Position, token.Text, errorCode.ToString()!));
-        if (++ErrorCount > _maxErrors)
+        if (++ErrorCount > MaxErrors)
         {
             AbortTranslation(PascalErrorCode.TooManyErrors, parser);
         }

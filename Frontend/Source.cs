@@ -102,7 +102,9 @@ public class Source(StreamReader reader) : IMessageProducer
 
         _ = GetCurrentChar();
         if (_line is null)
+        {
             return EOF;
+        }
 
         int nextPosition = CurrentPosition.Value + 1;
         return nextPosition < _line.Length ? _line[nextPosition] : EOL;
