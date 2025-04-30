@@ -1,11 +1,9 @@
-﻿using FrontendComponents.Pascal;
-
-namespace FrontendComponents;
+﻿namespace FrontendComponents;
 
 /// <summary>
 /// Represents an end-of-file token in a token stream. 
 /// </summary>
-public record EofToken : PascalToken
+public record EofToken : Token
 {
     /// <summary>
     /// Initializes a new instance of the EofToken class.

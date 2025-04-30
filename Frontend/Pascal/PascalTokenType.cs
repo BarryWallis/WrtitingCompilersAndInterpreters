@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CommonInterfaces;
+﻿using CommonInterfaces;
 
 namespace FrontendComponents.Pascal;
 public class PascalTokenType : ITokenType
@@ -13,12 +7,12 @@ public class PascalTokenType : ITokenType
     private const int LastSpecialSymbolIndex = (int)ITokenType.Kind.DotDot;
 
     public static readonly HashSet<string> _reservedWords =
-    [
-        "and", "array", "begin", "case", "const", "div", "do", "downto", "else",
+    new(
+        ["and", "array", "begin", "case", "const", "div", "do", "downto", "else",
         "end", "file", "for", "function", "goto", "if", "in", "label", "mod",
         "nil", "not", "of", "or", "packed", "procedure", "program", "record",
-        "repeat", "set", "then", "to", "type", "until", "var", "while", "with"
-    ];
+        "repeat", "set", "then", "to", "type", "until", "var", "while", "with"], StringComparer.OrdinalIgnoreCase
+    );
 
     private static readonly string[] _specialSymbolLiterals =
     [

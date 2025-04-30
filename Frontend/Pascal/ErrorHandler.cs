@@ -9,7 +9,7 @@ public class ErrorHandler
 {
     private const int MaxErrors = 25;
 
-    public static int ErrorCount {get; set;} = 0;
+    public static int ErrorCount { get; set; } = 0;
 
     public static void Flag(Token token, PascalErrorCode errorCode, Parser parser)
     {

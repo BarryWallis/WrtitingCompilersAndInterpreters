@@ -14,7 +14,7 @@ public class Pascal
     private readonly Parser? _parser;
     private readonly Source? _source;
     private readonly IIntermediateCode? _intermediateCode;
-    private readonly ISymbolTable? _symbolTable;
+    private readonly ISymbolTableStack? _symbolTableStack;
     private readonly Backend? _backend;
 
     /// <summary>
@@ -55,7 +55,7 @@ public class Pascal
             //_symbolTable 
             //    = Parser.SymbolTable 
             //      ?? throw new InvalidOperationException($"{nameof(Parser.SymbolTable)} is null.");
-            _backend.Process(_intermediateCode!, _symbolTable!);
+            _backend.Process(_intermediateCode!, _symbolTableStack!);
         }
         catch (Exception ex)
         {

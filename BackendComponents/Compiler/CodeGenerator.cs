@@ -23,7 +23,7 @@ public class CodeGenerator : Backend
     /// <param name="symbolTable"
     /// >Holds the symbols and their associated information for the code being processed.
     /// </param>
-    public override void Process(IIntermediateCode intermediateCode, ISymbolTable symbolTable)
+    public override void Process(IIntermediateCode intermediateCode, ISymbolTableStack symbolTableStack)
     {
         Stopwatch stopwatch = new();
         stopwatch.Start();

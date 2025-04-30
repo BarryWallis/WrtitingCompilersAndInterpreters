@@ -17,7 +17,7 @@ public class PascalErrorHandler
     /// <param name="token">The bad token.</param>
     /// <param name="errorCode">The Pascal error code.</param>
     /// <param name="parser">The parser information.</param>
-    public static void Flag(Token token, PascalErrorCode errorCode, Parser parser)
+    public static void Flag(PascalToken token, PascalErrorCode errorCode, Parser parser)
     {
         Debug.Assert(errorCode.ToString() is not null);
 

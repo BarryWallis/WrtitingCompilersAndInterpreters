@@ -7,7 +7,7 @@
 /// <param name="Position">The position of the syntax error.</param>
 /// <param name="TokenText">The token's text.</param>
 /// <param name="ErrorMessage">The error message</param>
-public record SyntaxErrorMessage(int LineNumber, int Position, string? TokenText, string ErrorMessage) 
+public record SyntaxErrorMessage(int LineNumber, int Position, string? TokenText, string ErrorMessage)
     : Message
 {
 }

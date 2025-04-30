@@ -22,7 +22,7 @@ public class UnsupportedLanguageException : Exception
     /// Holds additional information about a previous exception that led to 
     /// this error.
     /// </param>
-    public UnsupportedLanguageException(string? language, Exception? innerException) 
+    public UnsupportedLanguageException(string? language, Exception? innerException)
         : base(language, innerException)
     {
     }

@@ -17,10 +17,10 @@ public class Executor : Backend
     /// Processes intermediate code and symbol table, measuring execution time and counting errors.
     /// </summary>
     /// <param name="intermediateCode">Represents the code to be processed during execution.</param>
-    /// <param name="symbolTable">
+    /// <param name="symbolTableStack">
     /// Contains the symbols and their associated information used in the code.
     /// </param>
-    public override void Process(IIntermediateCode intermediateCode, ISymbolTable symbolTable)
+    public override void Process(IIntermediateCode intermediateCode, ISymbolTableStack symbolTableStack)
     {
         Stopwatch stopwatch = new();
         stopwatch.Start();

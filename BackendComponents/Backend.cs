@@ -17,8 +17,8 @@ public abstract class Backend : IMessageProducer
     /// <param name="intermediateCode">
     /// Represents the intermediate representation of code to be processed.
     /// </param>
-    /// <param name="symbolTable">Holds the definitions and scopes of symbols used in the code.</param>
-    public abstract void Process(IIntermediateCode intermediateCode, ISymbolTable symbolTable);
+    /// <param name="symbolTableStack">Holds the definitions and scopes of symbols used in the code.</param>
+    public abstract void Process(IIntermediateCode intermediateCode, ISymbolTableStack symbolTableStack);
 
     /// <summary>
     /// Adds a message listener to receive notifications for incoming messages.

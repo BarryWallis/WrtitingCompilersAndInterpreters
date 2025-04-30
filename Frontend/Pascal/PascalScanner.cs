@@ -1,9 +1,4 @@
-﻿
-using System.Security.Cryptography;
-
-using CommonInterfaces;
-
-namespace FrontendComponents.Pascal;
+﻿namespace FrontendComponents.Pascal;
 
 /// <summary>
 /// Extracts a token based on the current character, returning an end-of-file token if the character is 

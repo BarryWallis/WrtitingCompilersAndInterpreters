@@ -4,7 +4,9 @@ using FrontendComponents;
 
 using Intermediate;
 
-namespace List;
+using Utilities;
+
+namespace Xref;
 
 /// <summary>
 /// Initializes a Pascal compiler or executor, parsing a source file and processing it with a backend. 
@@ -13,11 +15,8 @@ public class Pascal
 {
     private readonly Parser? _parser;
     private readonly Source? _source;
-#pragma warning disable 0649
     private readonly IIntermediateCode? _intermediateCode;
     private readonly ISymbolTableStack? _symbolTableStack;
-#pragma warning restore 0649
-
     private readonly Backend? _backend;
 
     /// <summary>
@@ -51,13 +50,17 @@ public class Pascal
             _parser.Parse();
             _source.Close();
 
-            // TODO: Uncomment the following lines when the properties are implemented in the Parser class.
-            //_intermediateCode 
-            //    = _parser.IntermediateCode 
+            //_intermediateCode
+            //    = _parser.IntermediateCode
             //      ?? throw new InvalidOperationException($"{nameof(IIntermediateCode)} is null.");
-            //_symbolTableStack 
-            //    = Parser.SymbolTable 
-            //      ?? throw new InvalidOperationException($"{nameof(Parser.SymbolTable)} is null.");
+            _symbolTableStack
+                = Parser.SymbolTableStack
+                  ?? throw new InvalidOperationException($"{nameof(Parser.SymbolTableStack)} is null.");
+
+            if (xref)
+            {
+                CrossReferencer.Print(_symbolTableStack);
+            }
             _backend.Process(_intermediateCode!, _symbolTableStack!);
         }
         catch (Exception ex)

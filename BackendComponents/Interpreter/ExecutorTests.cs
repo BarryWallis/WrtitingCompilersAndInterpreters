@@ -1,4 +1,4 @@
-using Intermediate;
+﻿using Intermediate;
 
 using Messages;
 
@@ -15,13 +15,13 @@ public class ExecutorTests
     {
         // Arrange
         Mock<IIntermediateCode> mockIntermediateCode = new();
-        Mock<ISymbolTable> mockSymbolTable = new();
+        Mock<ISymbolTableStack> mockSymbolTableStack = new();
         Mock<IMessageListener> mockListener = new();
         Executor executor = new();
         executor.AddMessageListener(mockListener.Object);
 
         // Act
-        executor.Process(mockIntermediateCode.Object, mockSymbolTable.Object);
+        executor.Process(mockIntermediateCode.Object, mockSymbolTableStack.Object);
 
         // Assert
         mockListener.Verify(listener => listener.MessageReceived(It.IsAny<InterpreterSummaryMessage>()), Times.Once);

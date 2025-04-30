@@ -62,7 +62,7 @@ public record PascalErrorCode
     public static readonly PascalErrorCode UnexpectedToken = new("Unexpected token");
     public static readonly PascalErrorCode Unimplemented = new("Unimplemented feature");
     public static readonly PascalErrorCode Unrecognizable = new("Unrecognizable input");
-    public static readonly PascalErrorCode WrongNumberOfParms 
+    public static readonly PascalErrorCode WrongNumberOfParms
                                             = new("Wrong number of actual parameters");
 
     public static readonly PascalErrorCode IOError = new("Object I/O error", -101);

@@ -20,6 +20,7 @@ public abstract class Parser(Scanner scanner) : IMessageProducer
 
     protected Scanner Scanner { get; init; } = scanner;
 
+    public static readonly ISymbolTableStack SymbolTableStack = SymbolTableFactory.CreateSymbolTableStack();
     public static ISymbolTable? SymbolTable { get; protected set; } = null;
     public IIntermediateCode? IntermediateCode { get; protected set; } = null;
 

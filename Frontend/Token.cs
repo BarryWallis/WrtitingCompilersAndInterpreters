@@ -1,8 +1,4 @@
-﻿using CommonInterfaces;
-
-using FrontendComponents.Pascal;
-
-namespace FrontendComponents;
+﻿namespace FrontendComponents;
 
 /// <summary>
 /// Abstract record representing a token with properties for type, text, and value. Initializes with source 
@@ -18,7 +14,7 @@ public abstract record Token
     public object? Value { get; protected set; } = null;
 
     /// <summary>
-    /// Initializes a Token object using a provided source, extracting relevant information from it.
+    /// Initializes a PascalToken object using a provided source, extracting relevant information from it.
     /// </summary>
     /// <param name="source">
     /// The input provides the necessary data to set the token's line number and 

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Xref": {
+      "commandName": "Project",
+      "commandLineArgs": "compile -x C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Xref\\wolfisland.pas"
+    }
+  }
+}

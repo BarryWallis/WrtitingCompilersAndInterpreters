@@ -1,4 +1,4 @@
-using Intermediate;
+﻿using Intermediate;
 
 using Messages;
 
@@ -15,13 +15,13 @@ public class CodeGeneratorTests
     {
         // Arrange
         Mock<IIntermediateCode> mockIntermediateCode = new();
-        Mock<ISymbolTable> mockSymbolTable = new();
+        Mock<ISymbolTableStack> mockSymbolTableStack = new();
         Mock<IMessageListener> mockListener = new();
         CodeGenerator codeGenerator = new();
         codeGenerator.AddMessageListener(mockListener.Object);
 
         // Act
-        codeGenerator.Process(mockIntermediateCode.Object, mockSymbolTable.Object);
+        codeGenerator.Process(mockIntermediateCode.Object, mockSymbolTableStack.Object);
 
         // Assert
         mockListener.Verify(listener => listener.MessageReceived(It.IsAny<CompilerSummaryMessage>()), Times.Once);

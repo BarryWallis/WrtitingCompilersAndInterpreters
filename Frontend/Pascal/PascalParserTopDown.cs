@@ -2,6 +2,8 @@
 
 using CommonInterfaces;
 
+using Intermediate;
+
 using Messages;
 
 namespace FrontendComponents.Pascal;
@@ -29,15 +31,15 @@ public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
     /// </summary>
     public override void Parse()
     {
-        PascalToken? token;
+        Token? token;
         Stopwatch stopwatch = new();
+        stopwatch.Start();
 
         try
         {
-            while ((token = GetNextToken() as PascalToken) is not EofToken)
+            while ((token = GetNextToken()) is not EofToken)
             {
                 Debug.Assert(token is not null);
-
                 ProcessToken(token);
             }
 
@@ -57,20 +59,30 @@ public class PascalParserTopDown(Scanner scanner) : Parser(scanner)
     /// Process the next token.
     /// </summary>
     /// <param name="token">The token to process.</param>
-    private void ProcessToken(PascalToken token)
+    private void ProcessToken(Token token)
     {
         if (token is not PascalErrorToken)
         {
-            Debug.Assert(token.Text is not null);
-            Debug.Assert(token.Kind is not null);
-            SendMessage(new TokenMessage(token.LineNumber, token.Position,
-                                         token.Kind.Value,
-                                         token.Text, token.Value));
-        }
-        else
-        {
-            Debug.Assert(token.Value is not null);
-            ErrorHandler.Flag(token, (PascalErrorCode)token.Value, this);
+            Debug.Assert(token is PascalToken);
+            PascalToken pascalToken = (token as PascalToken)!;
+
+            ITokenType.Kind? kind = pascalToken.Kind;
+            Debug.Assert(kind is not null);
+
+            if (kind == ITokenType.Kind.Identifier)
+            {
+                Debug.Assert(pascalToken.Text is not null);
+                string name = pascalToken.Text.ToLowerInvariant();
+                ISymbolTableEntry? entry = SymbolTableStack.Lookup(name) ?? SymbolTableStack.EnterLocal(name);
+
+                Debug.Assert(entry is not null);
+                entry.AppendLineNumber(pascalToken.LineNumber);
+            }
+            else if (kind == ITokenType.Kind.Error)
+            {
+                Debug.Assert(pascalToken.Value is PascalErrorCode);
+                ErrorHandler.Flag(pascalToken, (token.Value as PascalErrorCode)!, this);
+            }
         }
     }
 }
