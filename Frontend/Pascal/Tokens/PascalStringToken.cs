@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace FrontendComponents.Pascal;
+namespace FrontendComponents.Pascal.Tokens;
 
 /// <summary>
 /// A Pascal token representing a string.

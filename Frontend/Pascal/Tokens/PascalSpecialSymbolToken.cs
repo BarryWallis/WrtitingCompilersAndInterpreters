@@ -1,6 +1,6 @@
 ﻿using CommonInterfaces;
 
-namespace FrontendComponents.Pascal;
+namespace FrontendComponents.Pascal.Tokens;
 
 /// <summary>
 /// A class representing a special symbol token in Pascal.

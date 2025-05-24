@@ -1,4 +1,6 @@
-﻿namespace FrontendComponents.Pascal;
+﻿using FrontendComponents.Pascal.Tokens;
+
+namespace FrontendComponents.Pascal;
 
 /// <summary>
 /// Extracts a token based on the current character, returning an end-of-file token if the character is 

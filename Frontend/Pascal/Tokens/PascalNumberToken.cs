@@ -2,7 +2,7 @@
 
 using CommonInterfaces;
 
-namespace FrontendComponents.Pascal;
+namespace FrontendComponents.Pascal.Tokens;
 
 /// <summary>
 /// A class representing a number token in Pascal.
@@ -61,7 +61,7 @@ public record PascalNumberToken : PascalToken
         }
 
         currentChar = CurrentChar();
-        if (!sawDotDot && ((currentChar == 'E') || (currentChar == 'e')))
+        if (!sawDotDot && (currentChar == 'E' || currentChar == 'e'))
         {
             exponentDigits = ExtractExponent(textBuffer, ref exponentSign, ref currentChar);
         }

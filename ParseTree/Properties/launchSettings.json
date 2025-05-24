@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParseTree": {
+      "commandName": "Project",
+      "commandLineArgs": "execute -i C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\ParseTree\\assignsamples.txt"
+    }
+  }
+}

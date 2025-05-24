@@ -1,6 +1,6 @@
 ﻿using CommonInterfaces;
 
-namespace FrontendComponents.Pascal;
+namespace FrontendComponents.Pascal.Tokens;
 
 /// <summary>
 /// Pascal error token.
