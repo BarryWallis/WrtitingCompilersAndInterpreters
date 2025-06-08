@@ -3,7 +3,7 @@ using System.Text;
 
 using Messages;
 
-namespace ParseTree;
+namespace AssignInterpreter;
 
 /// <summary>
 /// Handles received messages and processes ParserSummaryMessage to display parsing statistics.
@@ -11,7 +11,7 @@ namespace ParseTree;
 /// <exception cref="UnreachableException">Message type is unrecognized.</exception>
 public class ParserMessageListener : IMessageListener
 {
-    private const int PrefixWidth = 5;
+    private const int PrefixWidth = 4;
 
     /// <summary>
     /// Handles incoming messages and processes specific message types for output. It outputs details for

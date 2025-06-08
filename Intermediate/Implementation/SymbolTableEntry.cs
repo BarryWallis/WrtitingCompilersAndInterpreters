@@ -8,7 +8,7 @@ namespace Intermediate.Implementation;
 /// </summary>
 public class SymbolTableEntry : ISymbolTableEntry
 {
-    private readonly Dictionary<ISymbolTableKey<SymbolTableKeyType>, object?> _attributes = [];
+    private readonly Dictionary<SymbolTableKeyType, object?> _attributes = [];
 
     public string Name { get; }
     public ISymbolTable SymbolTable { get; }
@@ -44,13 +44,12 @@ public class SymbolTableEntry : ISymbolTableEntry
     /// </summary>
     /// <param name="key">The key of the attribute to retrieve.</param>
     /// <returns>The value of the attribute, or null if the attribute does not exist.</returns>
-    public object? GetAttribute(ISymbolTableKey<SymbolTableKeyType> key)
-        => _attributes.TryGetValue(key, out object? value) ? value : null;
+    public object? GetAttribute(SymbolTableKeyType key) => _attributes.TryGetValue(key, out object? value) ? value : null;
 
     /// <summary>
     /// Adds or updates the value of the specified attribute for this symbol table entry.
     /// </summary>
     /// <param name="key">The key of the attribute to set.</param>
     /// <param name="value">The value of the attribute. Can be null.</param>
-    public void SetAttribute(ISymbolTableKey<SymbolTableKeyType> key, object? value) => _attributes[key] = value;
+    public void SetAttribute(SymbolTableKeyType key, object? value) => _attributes[key] = value;
 }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 
 using Intermediate;
+using Intermediate.Implementation;
 
 using Messages;
 
@@ -11,7 +12,28 @@ namespace BackendComponents.Interpreter;
 /// </summary>
 public class Executor : Backend
 {
-    private readonly MessageHandler _messageHandler = new();
+#pragma warning disable IDE0079 // Remove unnecessary suppression
+#pragma warning disable CA2211 // Non-constant fields should not be visible
+    protected static int _executionCount = 0;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
+#pragma warning restore IDE0079 // Remove unnecessary suppression
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Executor"/> class.
+    /// </summary>
+    public Executor()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Executor"/> class using the specified parent executor.
+    /// </summary>
+    /// <param name="parent">The parent executor to inherit from.</param>
+#pragma warning disable IDE0060 // Remove unused parameter
+    public Executor(Executor parent) : base()
+#pragma warning restore IDE0060 // Remove unused parameter
+    {
+    }
 
     /// <summary>
     /// Processes intermediate code and symbol table, measuring execution time and counting errors.
@@ -22,32 +44,20 @@ public class Executor : Backend
     /// </param>
     public override void Process(IIntermediateCode intermediateCode, ISymbolTableStack symbolTableStack)
     {
-        Stopwatch stopwatch = new();
-        stopwatch.Start();
+        SymbolTableStack = symbolTableStack;
+        IntermediateCode = intermediateCode;
+
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
+        Debug.Assert(intermediateCode.Root is not null);
+        IIntermediateCodeNode rootNode = intermediateCode.Root;
+        StatementExecutor statementExecutor = new(this);
+        _ = statementExecutor.Execute(rootNode);
+
         stopwatch.Stop();
         double elapsedTime = stopwatch.Elapsed.TotalSeconds;
-        int executionCount = 0;
-        int runtimeErrors = 0;
-        SendMessage(new InterpreterSummaryMessage(executionCount, runtimeErrors, elapsedTime));
+        int runtimeErrors = RuntimeErrorHandler.ErrorCount;
+
+        SendMessage(new InterpreterSummaryMessage(_executionCount, runtimeErrors, elapsedTime));
     }
-
-    /// <summary>
-    /// Adds a message listener to the message handler for processing incoming messages.
-    /// </summary>
-    /// <param name="listener">The provided listener will handle the messages received by the system.</param>
-    public override void AddMessageListener(IMessageListener listener)
-        => _messageHandler.AddListener(listener);
-
-    /// <summary>
-    /// Removes a message listener from the message handler.
-    /// </summary>
-    /// <param name="listener">The listener to be removed from the message handling process.</param>
-    public override void RemoveMessageListener(IMessageListener listener)
-        => _messageHandler.RemoveListener(listener);
-
-    /// <summary>
-    /// Sends a message using the specified message handler.
-    /// </summary>
-    /// <param name="message">The content to be sent through the message handler.</param>
-    public override void SendMessage(Message message) => _messageHandler.SendMessage(message);
 }

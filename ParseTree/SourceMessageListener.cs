@@ -2,7 +2,7 @@
 
 using Messages;
 
-namespace ParseTree;
+namespace AssignInterpreter;
 
 /// <summary>
 /// Handles incoming messages and processes SourceLineMessage types. Outputs the source line number and line 

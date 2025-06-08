@@ -6,7 +6,7 @@ using Intermediate;
 
 using Utilities;
 
-namespace ParseTree;
+namespace AssignInterpreter;
 
 /// <summary>
 /// Initializes a Pascal compiler or executor, parsing a source file and processing it with a backend. 
@@ -72,6 +72,7 @@ public class Pascal
         catch (Exception ex)
         {
             Console.Error.WriteLine($"Internal translator error: {ex.Message}");
+            throw;
         }
     }
 }

@@ -149,8 +149,16 @@ public class ExpressionParser(PascalParserTopDown parent) : StatementParser(pare
         // Advance to the next token
         token = GetNextToken();
 
-        // Parse the term and add it as a child of the operator node
-        _ = operatorNode.AddChild(ParseTerm(token));
+        // Parse the term and if it is not an error, add it as a child of the operator node
+        IIntermediateCodeNode? term = ParseTerm(token);
+        if (term is null)
+        {
+            return token;
+        }
+        else
+        {
+            _ = operatorNode.AddChild(term);
+        }
 
         // Update the root node to the operator node
         rootNode = operatorNode;

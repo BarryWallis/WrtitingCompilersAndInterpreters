@@ -24,7 +24,7 @@ public interface ISymbolTableEntry
     /// does not already exist, it will be added with the specified value.</remarks>
     /// <param name="key">The key representing the attribute to set.</param>
     /// <param name="value">The value to associate with the specified key.</param>
-    void SetAttribute(ISymbolTableKey<SymbolTableKeyType> key, object? value);
+    void SetAttribute(SymbolTableKeyType key, object? value);
 
     /// <summary>
     /// Retrieves the value associated with the specified key from the symbol table entry.
@@ -32,5 +32,5 @@ public interface ISymbolTableEntry
     /// <param name="key">The key used to identify the attribute in the symbol table.</param>
     /// <returns>The value associated with the specified key.
     /// </returns>
-    object? GetAttribute(ISymbolTableKey<SymbolTableKeyType> key);
+    object? GetAttribute(SymbolTableKeyType key);
 }

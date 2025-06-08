@@ -6,10 +6,9 @@ namespace BackendComponents;
 
 public abstract class Backend : IMessageProducer
 {
-    protected static MessageHandler MessageHandler => new();
-
-    protected ISymbolTable? SymbolTable { get; set; }
-    protected IIntermediateCode? IntermediateCode { get; set; }
+    public static MessageHandler MessageHandler { get; protected set; } = new();
+    public static ISymbolTableStack? SymbolTableStack { get; protected set; }
+    public static IIntermediateCode? IntermediateCode { get; protected set; }
 
     /// <summary>
     /// Processes intermediate code using a symbol table for context and information.
@@ -26,7 +25,7 @@ public abstract class Backend : IMessageProducer
     /// <param name="listener">
     /// The provided listener will handle the processing of messages as they arrive.
     /// </param>
-    public abstract void AddMessageListener(IMessageListener listener);
+    public void AddMessageListener(IMessageListener listener) => MessageHandler.AddListener(listener);
 
     /// <summary>
     /// Removes a message listener from the system, preventing it from receiving further messages.
@@ -34,12 +33,12 @@ public abstract class Backend : IMessageProducer
     /// <param name="listener">
     /// The listener to be removed, which previously received notifications about messages.
     /// </param>
-    public abstract void RemoveMessageListener(IMessageListener listener);
+    public void RemoveMessageListener(IMessageListener listener) => MessageHandler.RemoveListener(listener);
 
     /// <summary>
     /// Sends a message to a designated recipient or system. This is an abstract method that must be 
     /// implemented by derived classes.
     /// </summary>
     /// <param name="message">The content to be transmitted to the recipient.</param>
-    public abstract void SendMessage(Message message);
+    public void SendMessage(Message message) => MessageHandler.SendMessage(message);
 }

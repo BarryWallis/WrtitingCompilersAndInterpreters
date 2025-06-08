@@ -1,4 +1,4 @@
-﻿namespace ParseTree;
+﻿namespace AssignInterpreter;
 
 public class Program
 {

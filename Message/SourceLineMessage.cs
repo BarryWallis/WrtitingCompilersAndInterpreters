@@ -5,6 +5,6 @@
 /// </summary>
 /// <param name="SourceLineNumber">Indicates the line number in the source file.</param>
 /// <param name="Line">Contains the text of the line from the source file.</param>
-public record SourceLineMessage(int SourceLineNumber, string Line) : Message
+public record SourceLineMessage(int SourceLineNumber, string Line = "") : Message
 {
 }

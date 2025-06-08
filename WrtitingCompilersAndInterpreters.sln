@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xref", "Xref\Xref.csproj", "{D03C98D4-B1ED-4725-8A23-CE3DD17A3D6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTree", "ParseTree\ParseTree.csproj", "{42A46C06-AD3E-43C1-997A-A99B3D429035}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignInterpreter", "ParseTree\AssignInterpreter.csproj", "{42A46C06-AD3E-43C1-997A-A99B3D429035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

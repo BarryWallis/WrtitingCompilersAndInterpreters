@@ -1,5 +1,6 @@
 ﻿namespace Messages;
 
-public record RuntimeErrorMessage : Message
+public record RuntimeErrorMessage(string ErrorMessage, int? LineNumber) : Message
 {
+
 }

@@ -9,6 +9,5 @@ public static class BackendFactory
         => operation.Equals("compile", StringComparison.OrdinalIgnoreCase)
            ? new CodeGenerator()
            : operation.Equals("execute", StringComparison.OrdinalIgnoreCase)
-             ? (Backend)new Executor()
-             : throw new UnsupportedBackendException(operation);
+             ? new Executor() as Backend : throw new UnsupportedBackendException(operation);
 }

@@ -3,14 +3,14 @@
 public enum SymbolTableKeyType
 {
     // Constant.
-    CONSTANT_VALUE,
+    ConstantValue,
 
     // Procedure or function.
-    ROUTINE_CODE, ROUTINE_SYMTAB, ROUTINE_ICODE,
-    ROUTINE_PARMS, ROUTINE_ROUTINES,
+    RoutineCode, RoutineSymtab, RoutineICode,
+    RoutineParms, RoutineRoutines,
 
     // Variable or record field value.
-    DATA_VALUE
+    DataValue
 }
 
 public class SymbolTableKey : ISymbolTableKey<SymbolTableKeyType>
