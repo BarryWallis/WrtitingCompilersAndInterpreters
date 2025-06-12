@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 
 using CommonInterfaces;
 
@@ -12,6 +11,39 @@ namespace FrontendComponents.Pascal.Parsers;
 /// </summary>
 public class StatementParser(PascalParserTopDown parent) : PascalParserTopDown(parent)
 {
+    protected static readonly HashSet<ITokenType.Kind> _statementStartSet =
+    [
+        ITokenType.Kind.Begin,
+        ITokenType.Kind.Case,
+        ITokenType.Kind.For,
+        ITokenType.Kind.If,
+        ITokenType.Kind.Repeat,
+        ITokenType.Kind.While,
+        ITokenType.Kind.Identifier,
+        ITokenType.Kind.Semicolon,
+    ];
+
+    protected static readonly HashSet<ITokenType.Kind> _statementFollowSet =
+    [
+        ITokenType.Kind.Semicolon,
+        ITokenType.Kind.End,
+        ITokenType.Kind.Else,
+        ITokenType.Kind.Until,
+        ITokenType.Kind.Dot,
+    ];
+
+    protected static readonly HashSet<ITokenType.Kind> _expressionStartSet =
+    [
+        ITokenType.Kind.Plus,
+        ITokenType.Kind.Minus,
+        ITokenType.Kind.Identifier,
+        ITokenType.Kind.Integer,
+        ITokenType.Kind.Real,
+        ITokenType.Kind.String,
+        ITokenType.Kind.Not,
+        ITokenType.Kind.LeftParen,
+    ];
+
     /// <summary>
     /// Parses a Pascal statement and returns the corresponding intermediate code node.
     /// </summary>
@@ -19,11 +51,10 @@ public class StatementParser(PascalParserTopDown parent) : PascalParserTopDown(p
     /// <returns>
     /// An <see cref="IIntermediateCodeNode"/> representing the parsed statement, or <see langword="null"/> if parsing fails.
     /// </returns>
-    public virtual IIntermediateCodeNode? Parse(Token token)
+    public virtual IIntermediateCodeNode? Parse(PascalToken token)
     {
-        IIntermediateCodeNode? statementNode;
-        Debug.Assert(token is PascalToken);
-        switch ((token as PascalToken)!.Kind)
+        IIntermediateCodeNode? statementNode = null;
+        switch (token!.Kind)
         {
             case ITokenType.Kind.Begin:
                 CompoundStatementParser compoundParser = new(this);
@@ -32,6 +63,26 @@ public class StatementParser(PascalParserTopDown parent) : PascalParserTopDown(p
             case ITokenType.Kind.Identifier:
                 AssignmentStatementParser assignmentStatementParser = new(this);
                 statementNode = assignmentStatementParser.Parse(token);
+                break;
+            case ITokenType.Kind.Repeat:
+                RepeatStatementParser repeatParser = new(this);
+                statementNode = repeatParser.Parse(token);
+                break;
+            case ITokenType.Kind.While:
+                WhileStatementParser whileParser = new(this);
+                statementNode = whileParser.Parse(token);
+                break;
+            case ITokenType.Kind.For:
+                ForStatementParser forParser = new(this);
+                statementNode = forParser.Parse(token);
+                break;
+            case ITokenType.Kind.If:
+                IfStatementParser ifParser = new(this);
+                statementNode = ifParser.Parse(token);
+                break;
+            case ITokenType.Kind.Case:
+                CaseStatementParser caseParser = new(this);
+                statementNode = caseParser.Parse(token);
                 break;
             default:
                 statementNode = IntermediateCodeFactory.CreateIntermediateCodeNode(IIntermediateCodeNodeType.Kind.No_Op);
@@ -67,10 +118,13 @@ public class StatementParser(PascalParserTopDown parent) : PascalParserTopDown(p
     /// </exception>
     public void ParseList(PascalToken token, IIntermediateCodeNode parentNode, ITokenType.Kind terminator, PascalErrorCode errorCode)
     {
+        HashSet<ITokenType.Kind> terminatorSet = [.. _statementStartSet, terminator];
+
         while (token as Token is not EofToken && token.Kind != terminator)
         {
             IIntermediateCodeNode statementNode = Parse(token) ?? throw new UnreachableException();
             _ = parentNode.AddChild(statementNode);
+
             token = CurrentToken as PascalToken ?? throw new UnreachableException();
             ITokenType.Kind tokenType = token.Kind ?? throw new UnreachableException();
 
@@ -78,15 +132,12 @@ public class StatementParser(PascalParserTopDown parent) : PascalParserTopDown(p
             {
                 token = GetNextToken() as PascalToken ?? throw new UnreachableException();
             }
-            else if (tokenType == ITokenType.Kind.Identifier)
+            else if (_statementStartSet.Contains(tokenType))
             {
                 ErrorHandler.Flag(token, PascalErrorCode.MissingSemicolon, this);
             }
-            else if (tokenType != terminator)
-            {
-                ErrorHandler.Flag(token, PascalErrorCode.UnexpectedToken, this);
-                token = GetNextToken() as PascalToken ?? throw new UnreachableException();
-            }
+
+            token = Synchronize(terminatorSet) as PascalToken ?? throw new UnreachableException($"Expected {nameof(PascalToken)}");
         }
 
         if (token.Kind == terminator)

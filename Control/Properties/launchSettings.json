@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Control": {
+      "commandName": "Project",
+      "commandLineArgs": "compile -i C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Control\\TestFiles\\whileerrors.txt"
+    }
+  }
+}

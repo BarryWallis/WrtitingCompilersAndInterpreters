@@ -54,7 +54,7 @@ public class ExpressionParser(PascalParserTopDown parent) : StatementParser(pare
     /// <returns>
     /// An <see cref="IIntermediateCodeNode"/> representing the parsed expression, or <see langword="null"/> if parsing fails.
     /// </returns>
-    public override IIntermediateCodeNode? Parse(Token token) => ParseExpression(token);
+    public override IIntermediateCodeNode? Parse(PascalToken token) => ParseExpression(token);
 
     /// <summary>
     /// Parses an expression, which may include relational operators, and constructs the corresponding intermediate code node.

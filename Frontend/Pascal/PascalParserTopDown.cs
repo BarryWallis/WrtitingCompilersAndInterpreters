@@ -153,4 +153,34 @@ public class PascalParserTopDown : Parser
             }
         }
     }
+
+    /// <summary>
+    /// Synchronizes the parser by skipping tokens until a token from the synchronization set is found.
+    /// </summary>
+    /// <param name="synchronizationSet">A set of token kinds that are valid synchronization points.</param>
+    /// <returns>The token where synchronization was achieved.</returns>
+    /// <remarks>
+    /// This method is used for error recovery. When a syntax error is detected, it skips tokens
+    /// until it finds one that could be a valid continuation point (contained in the synchronization set).
+    /// If the current token is not in the synchronization set, it flags an error and continues
+    /// fetching tokens until a matching one is found or EOF is reached.
+    /// </remarks>
+    /// <exception cref="UnreachableException">Thrown when the current token is not a PascalToken.</exception>
+    public Token Synchronize(ISet<ITokenType.Kind> synchronizationSet)
+    {
+        PascalToken token = CurrentToken as PascalToken ?? throw new UnreachableException($"Expected {nameof(PascalToken)}");
+
+        Debug.Assert(token.Kind is ITokenType.Kind);
+        if (!synchronizationSet.Contains((ITokenType.Kind)token.Kind))
+        {
+            ErrorHandler.Flag(token, PascalErrorCode.UnexpectedToken, this);
+
+            do
+            {
+                token = GetNextToken() as PascalToken ?? throw new UnreachableException($"Expected {nameof(PascalToken)}");
+            } while (token as Token is not EofToken && !synchronizationSet.Contains((ITokenType.Kind)token.Kind!));
+        }
+
+        return token;
+    }
 }

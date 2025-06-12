@@ -20,10 +20,10 @@ public class CompoundStatementParser(StatementParser parent) : StatementParser(p
     /// <exception cref="UnreachableException">
     /// Thrown if an unexpected token type is encountered during parsing.
     /// </exception>
-    public override IIntermediateCodeNode? Parse(Token token)
+    public override IIntermediateCodeNode? Parse(PascalToken token)
     {
         // Retrieve the next token, which should be the first token inside the compound statement.
-        PascalToken pascalToken = GetNextToken() as PascalToken ?? throw new UnreachableException();
+        token = GetNextToken() as PascalToken ?? throw new UnreachableException($"Expected {nameof(PascalToken)}");
 
         // Create a compound node to represent the compound statement in the intermediate code.
         IIntermediateCodeNode compoundNode 
@@ -31,7 +31,7 @@ public class CompoundStatementParser(StatementParser parent) : StatementParser(p
 
         // Use a statement parser to parse the list of statements within the compound statement.
         StatementParser statementParser = new(this);
-        statementParser.ParseList(pascalToken, compoundNode, CommonInterfaces.ITokenType.Kind.End, PascalErrorCode.MissingEnd);
+        statementParser.ParseList(token, compoundNode, CommonInterfaces.ITokenType.Kind.End, PascalErrorCode.MissingEnd);
 
         return compoundNode;
     }

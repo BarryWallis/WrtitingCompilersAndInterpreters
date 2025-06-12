@@ -12,6 +12,11 @@ namespace FrontendComponents.Pascal.Parsers;
 /// </summary>
 public class AssignmentStatementParser(StatementParser parent) : StatementParser(parent)
 {
+    private static readonly HashSet<ITokenType.Kind> _colonEqualsSet =
+    [
+..      _expressionStartSet.Concat(_statementFollowSet), ITokenType.Kind.ColonEquals,
+    ];
+
     /// <summary>
     /// Parses an assignment statement, which assigns the result of an expression to a variable.
     /// </summary>
@@ -22,7 +27,7 @@ public class AssignmentStatementParser(StatementParser parent) : StatementParser
     /// <exception cref="UnreachableException">
     /// Thrown if an unexpected token type is encountered during parsing.
     /// </exception>
-    public override IIntermediateCodeNode Parse(Token token)
+    public override IIntermediateCodeNode Parse(PascalToken token)
     {
         // Create an assignment node to represent the assignment operation in the intermediate code.
         IIntermediateCodeNode assignmentNode
@@ -34,7 +39,7 @@ public class AssignmentStatementParser(StatementParser parent) : StatementParser
         targetId.AppendLineNumber(token.LineNumber);
 
         // Advance to the next token.
-        token = GetNextToken();
+        token = GetNextToken() as PascalToken ?? throw new UnreachableException($"Expected {nameof(PascalToken)}");
 
         // Create a variable node to represent the target variable in the intermediate code.
         IIntermediateCodeNode variableNode
@@ -43,9 +48,11 @@ public class AssignmentStatementParser(StatementParser parent) : StatementParser
         _ = assignmentNode.AddChild(variableNode);
 
         // Check for the assignment operator ":=".
+        token = Synchronize(_colonEqualsSet) as PascalToken
+            ?? throw new UnreachableException($"Expected {nameof(PascalToken)} with kind {ITokenType.Kind.ColonEquals}");
         if (token is PascalToken pascalToken && pascalToken.Kind == ITokenType.Kind.ColonEquals)
         {
-            token = GetNextToken() as PascalToken ?? throw new UnreachableException();
+            token = GetNextToken() as PascalToken ?? throw new UnreachableException("Expected PascalToken");
         }
         else
         {
@@ -56,7 +63,7 @@ public class AssignmentStatementParser(StatementParser parent) : StatementParser
         // Parse the expression on the right-hand side of the assignment.
         ExpressionParser expressionParser = new(this);
         _ = assignmentNode.AddChild(expressionParser.Parse(token));
-        
+
         return assignmentNode;
     }
 }

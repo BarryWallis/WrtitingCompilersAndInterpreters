@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~F:FrontendComponents.Parser.SymbolTableStack")]
+[assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:FrontendComponents.Pascal.Parsers.StatementParser.Parse(FrontendComponents.Pascal.PascalToken)~Intermediate.IIntermediateCodeNode")]
