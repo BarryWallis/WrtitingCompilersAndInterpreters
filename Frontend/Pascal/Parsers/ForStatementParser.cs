@@ -29,8 +29,8 @@ public class ForStatementParser(StatementParser parent) : StatementParser(parent
     /// </summary>
     private static readonly HashSet<ITokenType.Kind> _toDowntoSet =
         [.. _statementStartSet.Concat(_statementFollowSet)
-                                          .Append(ITokenType.Kind.To)
-                                          .Append(ITokenType.Kind.Downto)];
+                                         .Append(ITokenType.Kind.To)
+                                         .Append(ITokenType.Kind.Downto)];
 
     /// <summary>
     /// Set of token kinds that are valid before and including the DO keyword.
