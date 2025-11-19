@@ -1,1 +1,10 @@
-<Solution />
+<Solution>
+  <Folder Name="/Programs/">
+    <Project Path="Chapter2/Chapter2.csproj" Id="54d90b80-bd0d-4905-8a5a-7136fed4b5b4" />
+  </Folder>
+  <Project Path="Backend/BackendLib.csproj" Id="ecfc1f29-e8c9-40e7-8adc-1ba0b144626c" />
+  <Project Path="Frontend/FrontendLib.csproj" Id="4f824903-5ec9-4983-b59a-0198f2dbf8e9" />
+  <Project Path="Intermediate/IntermediateLib.csproj" Id="456f29fe-dd08-46b6-995d-ac6fc0444c7c" />
+  <Project Path="Message/MessageLib.csproj" Id="112d85ad-6f1b-4106-8720-e1292a634b91" />
+  <Project Path="Tests/Tests.csproj" />
+</Solution>

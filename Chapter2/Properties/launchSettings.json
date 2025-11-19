@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Chapter2": {
+      "commandName": "Project",
+      "commandLineArgs": "execute C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Chapter2\\hello.pas\r\n"
+    }
+  }
+}

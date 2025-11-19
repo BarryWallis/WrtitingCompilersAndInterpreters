@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Keep references but tests compile even if packages are unavailable by using local shim. -->
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Message\MessageLib.csproj" />
+    <ProjectReference Include="..\Frontend\FrontendLib.csproj" />
+    <ProjectReference Include="..\Backend\BackendLib.csproj" />
+    <ProjectReference Include="..\Intermediate\IntermediateLib.csproj" />
+  </ItemGroup>
+</Project>
