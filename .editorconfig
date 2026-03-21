@@ -1,0 +1,16 @@
+root = true
+
+# All files
+[*]
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+
+# Code files
+[*.{cs,csx,vb,vbx}]
+indent_size = 4
+
+# Disable spell checking for copilot-instructions.md
+[.github/copilot-instructions.md]
+dotnet_diagnostic.VSSpell*.severity = none

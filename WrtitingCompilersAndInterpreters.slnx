@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Libraries/">
+    <Project Path="Backend.Compiler.Tests/Backend.Compiler.Tests.csproj" />
+    <Project Path="Backend.Compiler/Backend.CompilerLib.csproj" Id="c293b8ef-94ab-41db-8c87-b7e733085625" />
+    <Project Path="Backend.CompositionLib/Backend.CompositionLib.csproj" Id="fb197c37-c141-412a-9115-8993ec1e36ba" />
+    <Project Path="Backend.Interpreter.Tests/Backend.Interpreter.Tests.csproj" />
+    <Project Path="Backend.InterpreterLib/Backend.InterpreterLib.csproj" Id="5f03a698-13d1-4629-ac9f-21a4533f6b09" />
+    <Project Path="Backend.Tests/Backend.Tests.csproj" />
+    <Project Path="Backend/BackendLib.csproj" Id="791fc9d7-02bf-45f4-8c17-644f93ed05c8" />
+    <Project Path="Frontend.CompositionLib/Frontend.CompositionLib.csproj" />
+    <Project Path="Frontend.PascalLib/Frontend.PascalLib.csproj" Id="80103c3f-5e00-49f6-8d23-2e3c1b6bce08" />
+    <Project Path="Frontend.Tests/Frontend.Tests.csproj" />
+    <Project Path="Frontend/FrontendLib.csproj" />
+    <Project Path="Intermediate/IntermediateLib.csproj" Id="1426cdf2-eefe-4031-9412-9c5c33f7a951" />
+    <Project Path="Message.Tests/Message.Tests.csproj" />
+    <Project Path="Message/MessageLib.csproj" Id="6b9d22a6-ee57-480c-b86e-3e67e7906778" />
+  </Folder>
+  <Folder Name="/Programs/">
+    <Project Path="Program2/Program2.csproj" Id="76a31c2d-f64f-4119-be7c-4b4653b1a292" />
+  </Folder>
+</Solution>
+
+
