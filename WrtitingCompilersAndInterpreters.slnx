@@ -17,6 +17,7 @@
   </Folder>
   <Folder Name="/Programs/">
     <Project Path="Program2/Program2.csproj" Id="76a31c2d-f64f-4119-be7c-4b4653b1a292" />
+    <Project Path="Tokenizer/Tokenizer.csproj" Id="24acce4b-2be8-4d69-8a9f-c48bc5d1d288" />
   </Folder>
 </Solution>
 

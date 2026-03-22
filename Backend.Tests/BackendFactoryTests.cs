@@ -18,7 +18,7 @@ public sealed class BackendFactoryTests
     {
         BackendLib.Backend backend = BackendFactory.CreateBackend("compile");
 
-        Assert.IsType<CodeGenerator>(backend);
+        _ = Assert.IsType<CodeGenerator>(backend);
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public sealed class BackendFactoryTests
     {
         BackendLib.Backend backend = BackendFactory.CreateBackend("execute");
 
-        Assert.IsType<Executor>(backend);
+        _ = Assert.IsType<Executor>(backend);
     }
 
     /// <summary>

@@ -26,7 +26,7 @@ public sealed class PascalParserTopDownTests
     }
 
     /// <summary>
-    /// Verifies Parse consumes tokens until EOF and publishes one parser summary message.
+    /// Verifies Parse consumes tokens until EOF and publishes token and parser summary messages.
     /// </summary>
     [Fact]
     public void ParseConsumesTokensUntilEofAndSendsParserSummaryMessage()
@@ -47,8 +47,10 @@ public sealed class PascalParserTopDownTests
         parser.Parse();
 
         Assert.Equal(2, scanner.ExtractCount);
-        _ = Assert.Single(listener.Messages);
-        ParserSummaryMessage summary = Assert.IsType<ParserSummaryMessage>(listener.Messages[0]);
+        Assert.Equal(2, listener.Messages.Count);
+        TokenMessage tokenMessage = Assert.IsType<TokenMessage>(listener.Messages[0]);
+        Assert.Equal(2, tokenMessage.LineNumber);
+        ParserSummaryMessage summary = Assert.IsType<ParserSummaryMessage>(listener.Messages[1]);
         Assert.Equal(7, summary.SourceLinesRead);
         Assert.Equal(0, summary.SyntaxErrors);
         Assert.True(summary.ElapsedTime >= 0f);

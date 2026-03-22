@@ -5,11 +5,11 @@ namespace FrontendLib;
 /// </summary>
 public record Token
 {
-    protected string text;
-    protected object? value;
     protected Source source;
-    protected int position;
 
+    public object? Value;
+    public string Text;
+    public int Position;
     public int LineNumber;
 
     /// <summary>
@@ -20,8 +20,8 @@ public record Token
     {
         source = theSource;
         LineNumber = source.LineNumber;
-        position = source.Position;
-        text = string.Empty;
+        Position = source.Position;
+        Text = string.Empty;
         Extract();
     }
 
@@ -30,8 +30,8 @@ public record Token
     /// </summary>
     protected virtual void Extract()
     {
-        text = CurrentChar().ToString();
-        value = null;
+        Text = CurrentChar().ToString();
+        Value = null;
         _ = NextChar();
     }
 

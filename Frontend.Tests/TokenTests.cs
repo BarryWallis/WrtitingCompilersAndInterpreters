@@ -65,21 +65,21 @@ public sealed class TokenTests
         /// <summary>
         /// Gets the extracted token text.
         /// </summary>
-        public string Text => text;
+        public new string Text => base.Text;
 
         /// <summary>
         /// Gets the extracted token value.
         /// </summary>
-        public object? Value => value;
+        public new object? Value => base.Value;
 
         /// <summary>
         /// Gets the captured token line number.
         /// </summary>
-        public int LineNum => LineNumber;
+        public int LineNum => base.LineNumber;
 
         /// <summary>
         /// Gets the captured token source position.
         /// </summary>
-        public int Position => position;
+        public new int Position => base.Position;
     }
 }

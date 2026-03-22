@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Frontend\FrontendLib.csproj" />
     <ProjectReference Include="..\Frontend.CompositionLib\Frontend.CompositionLib.csproj" />
     <ProjectReference Include="..\Frontend.PascalLib\Frontend.PascalLib.csproj" />
+    <ProjectReference Include="..\Tokenizer\Tokenizer.csproj" />
   </ItemGroup>
 
 </Project>

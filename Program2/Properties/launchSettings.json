@@ -2,7 +2,7 @@
   "profiles": {
     "Program2": {
       "commandName": "Project",
-      "commandLineArgs": "executex C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Program2\\hello.pas"
+      "commandLineArgs": "execute C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Program2\\hello.pas"
     }
   }
 }

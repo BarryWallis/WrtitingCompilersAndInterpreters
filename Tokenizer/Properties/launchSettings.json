@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Tokenizer": {
+      "commandName": "Project",
+      "commandLineArgs": "compile C:\\Users\\barry\\OneDrive\\Source\\Repos\\WrtitingCompilersAndInterpreters\\Tokenizer\\scannertest.txt"
+    }
+  }
+}
